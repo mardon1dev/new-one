@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background-color: rgba(0, 0, 0, 1);
+  --text-color: rgba(255, 255, 255, 1);
+  --radial-white: rgba(255, 255, 255, 1);
+  --radial-black: rgba(0, 0, 0, 0);
+}
+
+.dark-mode {
+  --background-color: rgba(255, 255, 255, 1);
+  --text-color: rgba(0, 0, 0, 1);
+  --radial-white: rgba(0, 0, 0, 1);
+  --radial-black: rgba(255, 255, 255, 0);
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background-color);
+  overflow-x: hidden;
+  font-family: monospace;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.container {
+  max-width: 1240px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+}
+.header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header span {
+  color: var(--text-color);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.header ul {
+  display: flex;
+  gap: 20px;
+  & a {
+    color: var(--text-color);
+    font-size: 18px;
+  }
+}
+
+.element {
+  position: fixed;
+  z-index: -1;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(
+    circle,
+    var(--radial-white) 0%,
+    var(--radial-black) 80%
+  );
+  pointer-events: none;
+  animation: riple 1s ease-out forwards;
+}
+
+@keyframes riple {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10) translateY(-10px);
+    opacity: 0;
+  }
+}
+
+#snowFall {
+  position: fixed;
+  top: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Hero */
+
+.hero-section {
+  width: 100%;
+  position: relative;
+}
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .typing-container {
+  display: flex;
+  font-size: 2em;
+  color: var(--text-color);
+  letter-spacing: 0.1em;
+  width: 100%;
+  pad: 50px;
+}
+
+.hero .cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.6s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Projects */
+
+.projects-section {
+  width: 100%;
+}
+.projects {
+  width: 100%;
+  height: 100vh;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Snow */
+.snowFlake {
+  color: var(--text-color);
+  position: absolute;
+  font-size: 1em;
+  animation: falling linear forwards;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  10%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.change-theme, .stop-snow {
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover {
+    border: 1px solid var(--background-color);
+    color: var(--background-color);
+    background: var(--text-color);
+  }
+}
+
+/* Scroll to Top */
+
+.scrollToTop {
+  display: none;
+}
+
+.showToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: fixed;
+  right: 20px;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  padding: 10px;
+  bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover {
+    background-color: var(--text-color);
+  }
+}
